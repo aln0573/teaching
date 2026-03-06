@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VIP Fitness - The Ultimate Premium Gym in Mukkam, Kozhikode, Kerala. Expert trainers, modern equipment, personalized fitness programs." />
+  <meta name="keywords" content="VIP Fitness, gym Mukkam, gym Kozhikode, fitness Kerala, personal training, weight loss, strength training" />
+  <title>VIP Fitness - Premium Gym in Mukkam, Kozhikode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===================== RESET & BASE ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: #050505;
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ul { list-style: none; }
+
+    /* ===================== VARIABLES ===================== */
+    :root {
+      --orange: #FF4400;
+      --orange-hover: #FF5500;
+      --dark: #050505;
+      --surface: #0A0A0A;
+      --surface2: #121212;
+      --border: rgba(255,255,255,0.1);
+      --text-muted: rgba(255,255,255,0.55);
+      --whatsapp: #25D366;
+    }
+
+    /* ===================== UTILITIES ===================== */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 6rem 0; }
+    .section-dark { background: var(--dark); }
+    .section-surface { background: var(--surface); }
+
+    .section-label {
+      display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .section-label span {
+      font-family: 'Oswald', sans-serif;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-size: 0.8rem;
+    }
+    .section-label .line { height: 1px; width: 2rem; background: var(--orange); }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .section-title .accent { color: var(--orange); }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      font-family: 'Oswald', sans-serif;
+      background: var(--orange);
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 1rem 2.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: background 0.2s, transform 0.2s;
+      border: 2px solid var(--orange);
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--orange-hover); transform: translateY(-2px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      font-family: 'Oswald', sans-serif;
+      background: transparent;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 1rem 2.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 2px solid rgba(255,255,255,0.25);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+
+    /* ===================== SCROLL REVEAL ===================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ===================== NAVBAR ===================== */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 1.5rem;
+      transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+    }
+    #navbar.scrolled {
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+    }
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: -0.02em;
+      display: flex; align-items: center; gap: 4px;
+      cursor: pointer;
+    }
+    .nav-logo .vip { color: var(--orange); }
+    .nav-logo .fit { color: #fff; }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.85rem; font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    .nav-links a:hover { color: var(--orange); }
+
+    .nav-cta {
+      font-family: 'Oswald', sans-serif;
+      background: var(--orange); color: #fff;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .nav-cta:hover { background: var(--orange-hover); transform: translateY(-1px); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+      background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px; background: #fff;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none; flex-direction: column; gap: 0;
+      background: rgba(0,0,0,0.97);
+      border-top: 1px solid var(--border);
+      overflow: hidden; max-height: 0;
+      transition: max-height 0.35s ease;
+    }
+    .mobile-menu.open { max-height: 500px; }
+    .mobile-menu a {
+      font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 500;
+      color: rgba(255,255,255,0.7); padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      cursor: pointer; transition: color 0.2s; display: block;
+    }
+    .mobile-menu a:hover { color: var(--orange); }
+    .mobile-menu .mobile-cta {
+      margin: 1rem 1.5rem 1.5rem;
+      background: var(--orange); color: #fff;
+      font-family: 'Oswald', sans-serif; font-size: 0.9rem;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.85rem; text-align: center; border: none;
+      cursor: pointer; width: calc(100% - 3rem);
+    }
+
+    /* ===================== HERO ===================== */
+    #home {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; transform: scale(1.1);
+      will-change: transform;
+    }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, #050505 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.3) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; max-width: 900px; padding: 0 1.5rem;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+      margin-bottom: 1.2rem;
+      opacity: 0; animation: fadeDown 0.6s 0.2s forwards;
+    }
+    .hero-eyebrow span {
+      font-family: 'Oswald', sans-serif; color: var(--orange);
+      text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.8rem;
+    }
+    .hero-eyebrow .line { height: 1px; width: 2.5rem; background: var(--orange); }
+    .hero-h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700; text-transform: uppercase;
+      line-height: 1; margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+    }
+    .hero-h1 .accent { color: var(--orange); }
+    .hero-sub {
+      color: rgba(255,255,255,0.65); font-size: 1rem; max-width: 560px;
+      margin: 0 auto 2.5rem; line-height: 1.7;
+      opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+    }
+    .hero-btns {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+    }
+    .hero-rating {
+      display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+      margin-top: 3rem;
+      opacity: 0; animation: fadeUp 0.6s 1.2s forwards;
+    }
+    .stars { display: flex; gap: 2px; }
+    .stars span { color: #facc15; font-size: 1.1rem; }
+    .hero-rating p { color: rgba(255,255,255,0.5); font-size: 0.82rem; }
+    .scroll-indicator {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      opacity: 0; animation: fadeUp 0.6s 1.5s forwards;
+    }
+    .scroll-indicator span {
+      font-family: 'Oswald', sans-serif; color: rgba(255,255,255,0.3);
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 2.5rem;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+      animation: scrollPulse 1.8s infinite;
+    }
+
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-15px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes scrollPulse { 0%,100%{transform:scaleY(1);} 50%{transform:scaleY(0.5) translateY(8px);} }
+
+    /* ===================== ABOUT ===================== */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .about-img-wrap { position: relative; }
+    .about-img-wrap img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .about-img-accent {
+      position: absolute; bottom: -1rem; right: -1rem;
+      width: 6rem; height: 6rem; background: var(--orange); z-index: -1;
+    }
+    .about-img-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(6px);
+      border: 1px solid var(--border); padding: 0.75rem 1rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .badge-num {
+      font-family: 'Oswald', sans-serif; color: #facc15;
+      font-size: 1.5rem; font-weight: 700; line-height: 1;
+    }
+    .badge-stars { display: flex; gap: 2px; margin-bottom: 2px; }
+    .badge-stars span { color: #facc15; font-size: 0.7rem; }
+    .badge-sub { color: rgba(255,255,255,0.4); font-size: 0.7rem; }
+
+    .about-text-top { margin-bottom: 2rem; }
+    .about-section-label {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
+    }
+    .about-section-label .line { height: 1px; width: 2rem; background: var(--orange); }
+    .about-section-label span {
+      font-family: 'Oswald', sans-serif; color: var(--orange);
+      text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.8rem;
+    }
+    .about-h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700; text-transform: uppercase; line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .about-h2 .accent { color: var(--orange); }
+    .about-p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 0.75rem; }
+
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-card {
+      background: var(--dark); border: 1px solid var(--border);
+      padding: 1.25rem; transition: border-color 0.3s;
+    }
+    .stat-card:hover { border-color: rgba(255,68,0,0.4); }
+    .stat-icon { color: var(--orange); margin-bottom: 0.75rem; }
+    .stat-val { font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; color: #fff; }
+    .stat-lbl { color: rgba(255,255,255,0.45); font-size: 0.8rem; margin-top: 2px; }
+
+    /* ===================== SERVICES ===================== */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 4rem;
+    }
+    .service-card {
+      background: var(--dark); border: 1px solid var(--border);
+      padding: 2rem; position: relative; overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--orange);
+      transition: width 0.5s ease;
+    }
+    .service-card:hover::after { width: 100%; }
+    .service-card:hover { border-color: rgba(255,68,0,0.5); transform: translateY(-4px); }
+    .service-icon {
+      width: 3rem; height: 3rem;
+      background: rgba(255,68,0,0.1); border: 1px solid rgba(255,68,0,0.2);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem; transition: background 0.3s;
+    }
+    .service-card:hover .service-icon { background: rgba(255,68,0,0.2); }
+    .service-icon svg { color: var(--orange); }
+    .service-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      color: #fff; margin-bottom: 0.75rem; transition: color 0.3s;
+    }
+    .service-card:hover .service-title { color: var(--orange); }
+    .service-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; }
+
+    /* ===================== GALLERY ===================== */
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 200px; gap: 0.75rem; margin-top: 4rem;
+    }
+    .gallery-item { position: relative; overflow: hidden; cursor: pointer; }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-overlay {
+      position: absolute; inset: 0; background: rgba(0,0,0,0);
+      display: flex; align-items: flex-end; padding: 1rem; transition: background 0.3s;
+    }
+    .gallery-item:hover .gallery-overlay { background: rgba(0,0,0,0.45); }
+    .gallery-label {
+      font-family: 'Oswald', sans-serif; color: #fff;
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;
+      opacity: 0; transform: translateY(8px); transition: opacity 0.3s, transform 0.3s;
+    }
+    .gallery-item:hover .gallery-label { opacity: 1; transform: translateY(0); }
+    .gallery-top-line {
+      position: absolute; top: 0; left: 0;
+      height: 2px; width: 0; background: var(--orange); transition: width 0.5s ease;
+    }
+    .gallery-item:hover .gallery-top-line { width: 100%; }
+
+    /* ===================== MEMBERSHIP ===================== */
+    .plans-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 4rem;
+    }
+    .plan-card {
+      border: 1px solid var(--border); background: var(--dark);
+      padding: 2rem; position: relative;
+      display: flex; flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .plan-card:hover { transform: translateY(-6px); border-color: rgba(255,68,0,0.4); }
+    .plan-card.popular {
+      background: #0F0F0F; border-color: var(--orange);
+      box-shadow: 0 0 40px rgba(255,68,0,0.12);
+    }
+    .plan-badge {
+      position: absolute; top: -1rem; left: 50%; transform: translateX(-50%);
+      background: var(--orange); color: #fff;
+      font-family: 'Oswald', sans-serif; font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      padding: 0.3rem 1rem; white-space: nowrap;
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .plan-name {
+      font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;
+    }
+    .plan-name.accent { color: var(--orange); }
+    .plan-desc { color: rgba(255,255,255,0.45); font-size: 0.82rem; margin-bottom: 1.5rem; }
+    .plan-price { display: flex; align-items: baseline; gap: 0.25rem; margin-bottom: 2rem; }
+    .plan-currency { font-family: 'Oswald', sans-serif; color: #fff; font-size: 0.9rem; }
+    .plan-amount { font-family: 'Oswald', sans-serif; color: #fff; font-size: 2.5rem; font-weight: 700; line-height: 1; }
+    .plan-period { color: rgba(255,255,255,0.35); font-size: 0.82rem; }
+    .plan-features { flex: 1; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+    .plan-feature { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .check-icon { color: var(--orange); flex-shrink: 0; margin-top: 2px; }
+    .plan-feature span { color: rgba(255,255,255,0.65); font-size: 0.85rem; }
+    .plan-cta {
+      width: 100%; font-family: 'Oswald', sans-serif;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.9rem; font-size: 0.85rem; font-weight: 600;
+      transition: background 0.2s, transform 0.2s; cursor: pointer;
+    }
+    .plan-cta.primary { background: var(--orange); color: #fff; border: 2px solid var(--orange); }
+    .plan-cta.primary:hover { background: var(--orange-hover); transform: translateY(-1px); }
+    .plan-cta.secondary { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.2); }
+    .plan-cta.secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); }
+    .plans-note { text-align: center; color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 2rem; }
+
+    /* ===================== REVIEWS ===================== */
+    .overall-rating {
+      display: inline-flex; align-items: center; gap: 1.25rem;
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 1rem 2rem; margin-top: 1.5rem;
+    }
+    .rating-big { font-family: 'Oswald', sans-serif; font-size: 3rem; font-weight: 700; color: #fff; }
+    .rating-right .stars-big { display: flex; gap: 3px; margin-bottom: 2px; }
+    .stars-big span { color: #facc15; font-size: 1.25rem; }
+    .rating-sub { color: rgba(255,255,255,0.35); font-size: 0.75rem; }
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem; margin-top: 4rem;
+    }
+    .review-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 1.5rem; transition: border-color 0.3s;
+    }
+    .review-card:hover { border-color: rgba(255,68,0,0.3); }
+    .review-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .review-stars { display: flex; gap: 2px; }
+    .review-stars span { color: #facc15; font-size: 0.8rem; }
+    .review-text { color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
+    .review-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .reviewer { display: flex; align-items: center; gap: 0.6rem; }
+    .reviewer-avatar {
+      width: 2rem; height: 2rem;
+      background: rgba(255,68,0,0.15); border: 1px solid rgba(255,68,0,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Oswald', sans-serif; color: var(--orange); font-size: 0.8rem; font-weight: 700;
+    }
+    .reviewer-name { color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 600; }
+    .review-time { color: rgba(255,255,255,0.25); font-size: 0.75rem; }
+
+    /* ===================== TIMINGS ===================== */
+    .timings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .timings-h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700; text-transform: uppercase; line-height: 1.1; margin-bottom: 1.25rem;
+    }
+    .timings-h2 .accent { color: var(--orange); }
+    .timings-p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 2rem; }
+    .quick-time { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .qt-card {
+      background: var(--dark); border: 1px solid var(--border);
+      padding: 1.25rem; display: flex; align-items: flex-start; gap: 0.75rem;
+    }
+    .qt-icon { color: var(--orange); flex-shrink: 0; margin-top: 2px; }
+    .qt-label {
+      font-family: 'Oswald', sans-serif; color: #fff; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.05em; display: block;
+    }
+    .qt-val { color: var(--orange); font-size: 0.85rem; font-weight: 600; margin-top: 2px; }
+    .schedule-table { background: var(--dark); border: 1px solid var(--border); overflow: hidden; }
+    .schedule-header {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 1rem 1.5rem; background: rgba(255,68,0,0.05);
+      border-bottom: 1px solid var(--border);
+    }
+    .schedule-header span {
+      font-family: 'Oswald', sans-serif; color: #fff;
+      text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem;
+    }
+    .schedule-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background 0.2s;
+    }
+    .schedule-row:last-child { border-bottom: none; }
+    .schedule-row:hover { background: rgba(255,255,255,0.03); }
+    .schedule-row.today { background: rgba(255,68,0,0.08); }
+    .day-name {
+      font-family: 'Manrope', sans-serif; font-size: 0.875rem; font-weight: 500;
+      color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 0.5rem;
+    }
+    .schedule-row.today .day-name { color: #fff; }
+    .today-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+    .today-badge {
+      font-family: 'Oswald', sans-serif; color: var(--orange); font-size: 0.65rem;
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .day-hours { font-size: 0.875rem; color: rgba(255,255,255,0.55); }
+    .schedule-row.today .day-hours { color: var(--orange); font-weight: 600; }
+    .day-hours.closed { color: rgba(239,68,68,0.7); }
+
+    /* ===================== LOCATION ===================== */
+    .location-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: start; }
+    .loc-info { display: flex; flex-direction: column; gap: 1rem; }
+    .loc-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 1.5rem; transition: border-color 0.3s;
+    }
+    .loc-card:hover { border-color: rgba(255,68,0,0.3); }
+    .loc-icon { color: var(--orange); margin-bottom: 1rem; }
+    .loc-label {
+      font-family: 'Oswald', sans-serif; color: #fff;
+      text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.8rem; margin-bottom: 0.5rem;
+    }
+    .loc-val { color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; }
+    .loc-val a { color: var(--text-muted); transition: color 0.2s; }
+    .loc-val a:hover { color: var(--orange); }
+    .directions-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background: var(--orange); color: #fff;
+      font-family: 'Oswald', sans-serif; text-transform: uppercase;
+      letter-spacing: 0.1em; font-size: 0.85rem; font-weight: 600;
+      padding: 0.9rem; transition: background 0.2s, transform 0.2s;
+      border: none; cursor: pointer; width: 100%; text-decoration: none;
+    }
+    .directions-btn:hover { background: var(--orange-hover); transform: translateY(-1px); }
+    .map-wrap { position: relative; overflow: hidden; border: 1px solid var(--border); }
+    .map-top-bar { height: 3px; background: var(--orange); }
+    .map-wrap iframe { display: block; width: 100%; height: 420px; border: none; }
+
+    /* ===================== CONTACT ===================== */
+    .contact-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 4rem; margin-bottom: 3rem;
+    }
+    .contact-card {
+      background: var(--dark); border: 1px solid var(--border);
+      padding: 2.5rem; text-align: center; transition: border-color 0.3s;
+    }
+    .contact-card:hover { border-color: rgba(255,68,0,0.4); }
+    .contact-icon-wrap {
+      width: 3.5rem; height: 3.5rem;
+      background: rgba(255,68,0,0.08); border: 1px solid rgba(255,68,0,0.2);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem; transition: background 0.3s;
+    }
+    .contact-card:hover .contact-icon-wrap { background: rgba(255,68,0,0.18); }
+    .contact-icon-wrap svg { color: var(--orange); }
+    .contact-card-label {
+      font-family: 'Oswald', sans-serif; color: #fff;
+      text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; margin-bottom: 0.75rem;
+    }
+    .contact-card-val { color: var(--text-muted); font-size: 0.875rem; line-height: 1.7; white-space: pre-line; margin-bottom: 1rem; }
+    .contact-link {
+      font-family: 'Oswald', sans-serif; color: var(--orange);
+      text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--orange-hover); }
+    .contact-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ===================== FOOTER ===================== */
+    footer { background: var(--dark); border-top: 1px solid var(--border); }
+    .footer-inner {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+      gap: 3rem; padding: 4rem 0 3rem;
+    }
+    .footer-brand p { color: rgba(255,255,255,0.4); font-size: 0.85rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .footer-logo {
+      font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700;
+      text-transform: uppercase; display: flex; align-items: center; gap: 4px;
+      margin-bottom: 1rem; cursor: pointer;
+    }
+    .footer-logo .vip { color: var(--orange); }
+    .footer-logo .fit { color: #fff; }
+    .social-links { display: flex; gap: 0.6rem; }
+    .social-link {
+      width: 2.2rem; height: 2.2rem;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .social-link:hover { background: var(--orange); border-color: var(--orange); }
+    .social-link svg { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .social-link:hover svg { color: #fff; }
+    .footer-col-title {
+      font-family: 'Oswald', sans-serif; color: #fff;
+      text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; margin-bottom: 1.5rem;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-links a { color: rgba(255,255,255,0.4); font-size: 0.85rem; cursor: pointer; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-contact-items { display: flex; flex-direction: column; gap: 1rem; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .footer-contact-item svg { color: var(--orange); flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-item span { color: rgba(255,255,255,0.4); font-size: 0.85rem; line-height: 1.6; }
+    .footer-contact-item a { color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-contact-item a:hover { color: var(--orange); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 1.5rem 0;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.2); font-size: 0.75rem; }
+
+    /* ===================== WHATSAPP FLOAT ===================== */
+    .wa-float {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+      width: 3.5rem; height: 3.5rem; border-radius: 50%;
+      background: var(--whatsapp);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      cursor: pointer;
+      animation: popIn 0.4s 2s both;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+    }
+    .wa-float:hover { transform: scale(1.12); box-shadow: 0 6px 30px rgba(37,211,102,0.6); }
+    .wa-float svg { color: #fff; position: relative; z-index: 1; }
+    .wa-pulse {
+      position: absolute; width: 100%; height: 100%;
+      border-radius: 50%; background: var(--whatsapp);
+      animation: ping 2s ease-out infinite;
+    }
+    @keyframes ping { 0% { transform: scale(1); opacity: 0.4; } 100% { transform: scale(2); opacity: 0; } }
+    @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    /* ===================== DIVIDER ===================== */
+    .divider { height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .timings-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .location-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 4rem 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+      .gallery-item.wide { grid-column: span 2; }
+      .gallery-item.tall { grid-row: span 1; }
+      .plans-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .contact-cards { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+    }
+    @media (max-width: 480px) {
+      .hero-btns { flex-direction: column; align-items: center; }
+      .hero-btns .btn-primary,
+      .hero-btns .btn-outline { width: 100%; justify-content: center; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item.wide { grid-column: span 1; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .quick-time { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo" onclick="smoothScrollTo('home')">
+        <span class="vip">VIP</span>
+        <span class="fit">FITNESS</span>
+      </div>
+      <div class="nav-links">
+        <a onclick="smoothScrollTo('home')">Home</a>
+        <a onclick="smoothScrollTo('about')">About</a>
+        <a onclick="smoothScrollTo('services')">Services</a>
+        <a onclick="smoothScrollTo('gallery')">Gallery</a>
+        <a onclick="smoothScrollTo('membership')">Membership</a>
+        <a onclick="smoothScrollTo('contact')">Contact</a>
+      </div>
+      <button class="nav-cta" onclick="smoothScrollTo('membership')">Join Now</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a onclick="smoothScrollTo('home');toggleMenu()">Home</a>
+      <a onclick="smoothScrollTo('about');toggleMenu()">About</a>
+      <a onclick="smoothScrollTo('services');toggleMenu()">Services</a>
+      <a onclick="smoothScrollTo('gallery');toggleMenu()">Gallery</a>
+      <a onclick="smoothScrollTo('membership');toggleMenu()">Membership</a>
+      <a onclick="smoothScrollTo('contact');toggleMenu()">Contact</a>
+      <button class="mobile-cta" onclick="smoothScrollTo('membership');toggleMenu()">Join Now</button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="home">
+    <div class="hero-bg" id="heroBg">
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=2070" alt="VIP Fitness Premium Gym" />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="line"></div>
+        <span>Mukkam, Kozhikode, Kerala</span>
+        <div class="line"></div>
+      </div>
+      <h1 class="hero-h1">
+        Transform Your Body<br>
+        <span class="accent">at VIP Fitness</span>
+      </h1>
+      <p class="hero-sub">
+        The Ultimate Fitness Destination in Mukkam &mdash; Expert Trainers, State-of-the-Art Equipment &amp; Personalized Programs Designed for Results.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="smoothScrollTo('membership')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Join Now
+        </button>
+        <button class="btn-outline" onclick="openWhatsApp('Hi! I want to enquire about joining VIP Fitness, Mukkam.')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp Enquiry
+        </button>
+      </div>
+      <div class="hero-rating">
+        <div class="stars">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+        </div>
+        <p>4.8 / 5 &nbsp;&mdash;&nbsp; Google Reviews</p>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="section section-dark">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal-left">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=1200" alt="VIP Fitness Premium Interior" />
+          <div class="about-img-accent"></div>
+          <div class="about-img-badge">
+            <div class="badge-num">4.8</div>
+            <div>
+              <div class="badge-stars">
+                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+              </div>
+              <div class="badge-sub">Google Reviews</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="about-text-top">
+            <div class="about-section-label">
+              <div class="line"></div>
+              <span>About VIP Fitness</span>
+            </div>
+            <h2 class="about-h2">
+              Mukkam's Most Trusted<br>
+              <span class="accent">Fitness Destination</span>
+            </h2>
+            <p class="about-p">
+              VIP Fitness is one of the most trusted gyms in Mukkam with modern equipment, expert trainers, and personalized fitness programs designed to help you achieve your goals.
+            </p>
+            <p class="about-p">
+              Whether you're starting your fitness journey or pushing to the next level, our state-of-the-art facility and certified trainers are here to guide you every step of the way. We offer a premium experience unlike anything else in Kozhikode.
+            </p>
+          </div>
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="stat-val">500+</div>
+              <div class="stat-lbl">Active Members</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div class="stat-val">4.8</div>
+              <div class="stat-lbl">Google Rating</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </div>
+              <div class="stat-val">100+</div>
+              <div class="stat-lbl">Equipment</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+              </div>
+              <div class="stat-val">16+</div>
+              <div class="stat-lbl">Hours Daily</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ========== SERVICES ========== -->
+  <section id="services" class="section section-surface">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">
+          <div class="line"></div>
+          <span>What We Offer</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">Training Programs &amp;<br><span class="accent">Services</span></h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal" style="transition-delay:0.0s">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5h11M6.5 17.5h11M3 12h18"/></svg>
+          </div>
+          <div class="service-title">Strength Training</div>
+          <p class="service-desc">Build raw power and muscle with our comprehensive strength training programs. Barbells, dumbbells, cables — everything you need.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.1s">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></svg>
+          </div>
+          <div class="service-title">Weight Loss Programs</div>
+          <p class="service-desc">Structured fat-burning programs combining cardio, HIIT, and nutrition guidance to help you reach your ideal weight fast.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.2s">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="service-title">Personal Training</div>
+          <p class="service-desc">One-on-one sessions with certified personal trainers who design custom workouts tailored to your specific goals.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.3s">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="service-title">Muscle Building</div>
+          <p class="service-desc">Hypertrophy-focused training with expert guidance on progressive overload, recovery, and optimal nutrition timing.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.4s">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div class="service-title">Cardio Fitness</div>
+          <p class="service-desc">Improve endurance and heart health with our wide range of cardio equipment — treadmills, bikes, ellipticals, and more.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.5s">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="service-title">Online Fitness Classes</div>
+          <p class="service-desc">Train from anywhere with our live and recorded online fitness classes led by expert VIP Fitness trainers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ========== GALLERY ========== -->
+  <section id="gallery" class="section section-dark">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">
+          <div class="line"></div>
+          <span>Inside VIP Fitness</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">Our <span class="accent">Gallery</span></h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item wide tall reveal">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200" alt="VIP Fitness Gym Floor" loading="lazy" />
+          <div class="gallery-overlay"><div class="gallery-label">Gym Floor</div></div>
+          <div class="gallery-top-line"></div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.1s">
+          <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&q=80&w=800" alt="Strength Training" loading="lazy" />
+          <div class="gallery-overlay"><div class="gallery-label">Strength Training</div></div>
+          <div class="gallery-top-line"></div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.15s">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=800" alt="Cardio Zone" loading="lazy" />
+          <div class="gallery-overlay"><div class="gallery-label">Cardio Zone</div></div>
+          <div class="gallery-top-line"></div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.2s">
+          <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&q=80&w=800" alt="Weight Training" loading="lazy" />
+          <div class="gallery-overlay"><div class="gallery-label">Weight Training</div></div>
+          <div class="gallery-top-line"></div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.25s">
+          <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&q=80&w=800" alt="Personal Training" loading="lazy" />
+          <div class="gallery-overlay"><div class="gallery-label">Personal Training</div></div>
+          <div class="gallery-top-line"></div>
+        </div>
+        <div class="gallery-item wide reveal" style="transition-delay:0.3s">
+          <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?auto=format&fit=crop&q=80&w=1200" alt="Gym Equipment" loading="lazy" />
+          <div class="gallery-overlay"><div class="gallery-label">Equipment Zone</div></div>
+          <div class="gallery-top-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ========== MEMBERSHIP ========== -->
+  <section id="membership" class="section section-surface">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">
+          <div class="line"></div>
+          <span>Membership Plans</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">Choose Your<br><span class="accent">Fitness Plan</span></h2>
+        <p class="section-subtitle" style="margin-top:0.75rem;">Flexible membership plans designed to suit every fitness goal and budget.</p>
+      </div>
+      <div class="plans-grid">
+        <!-- Silver -->
+        <div class="plan-card reveal" style="transition-delay:0s">
+          <div class="plan-name">Silver</div>
+          <p class="plan-desc">Perfect for beginners starting their fitness journey.</p>
+          <div class="plan-price">
+            <span class="plan-currency">&#8377;</span>
+            <span class="plan-amount">1,500</span>
+            <span class="plan-period">/month</span>
+          </div>
+          <ul class="plan-features">
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Full Gym Access</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Cardio Zone</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>General Trainer Support</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Locker Room Access</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Fitness Assessment</span></li>
+          </ul>
+          <button class="plan-cta secondary" onclick="openWhatsApp('Hi! I am interested in the Silver membership plan at VIP Fitness Mukkam.')">Get Started</button>
+        </div>
+        <!-- Gold -->
+        <div class="plan-card popular reveal" style="transition-delay:0.15s">
+          <div class="plan-badge">&#9733; Most Popular &#9733;</div>
+          <div class="plan-name accent">Gold</div>
+          <p class="plan-desc">Our most popular plan for serious fitness enthusiasts.</p>
+          <div class="plan-price">
+            <span class="plan-currency">&#8377;</span>
+            <span class="plan-amount">2,500</span>
+            <span class="plan-period">/month</span>
+          </div>
+          <ul class="plan-features">
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>All Silver Benefits</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Personal Trainer (2 sessions/week)</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Custom Diet Plan</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Steam Bath Access</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Priority Equipment Access</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Monthly Progress Review</span></li>
+          </ul>
+          <button class="plan-cta primary" onclick="openWhatsApp('Hi! I am interested in the Gold membership plan at VIP Fitness Mukkam.')">Join Gold</button>
+        </div>
+        <!-- Elite -->
+        <div class="plan-card reveal" style="transition-delay:0.3s">
+          <div class="plan-name">Elite</div>
+          <p class="plan-desc">The ultimate transformation package for elite results.</p>
+          <div class="plan-price">
+            <span class="plan-currency">&#8377;</span>
+            <span class="plan-amount">6,000</span>
+            <span class="plan-period">/3 months</span>
+          </div>
+          <ul class="plan-features">
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>All Gold Benefits</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Dedicated Personal Trainer</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Nutrition Consulting</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>VIP Merchandise Kit</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Unlimited Group Classes</span></li>
+            <li class="plan-feature"><span class="check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Injury Prevention Guidance</span></li>
+          </ul>
+          <button class="plan-cta secondary" onclick="openWhatsApp('Hi! I am interested in the Elite membership plan at VIP Fitness Mukkam.')">Go Elite</button>
+        </div>
+      </div>
+      <p class="plans-note">All plans include locker room access and free parking. Contact us on WhatsApp for special offers.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ========== REVIEWS ========== -->
+  <section id="reviews" class="section section-dark">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <div class="section-label">
+          <div class="line"></div>
+          <span>Google Reviews</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">What Our Members<br><span class="accent">Say About Us</span></h2>
+        <div style="display:flex;justify-content:center;">
+          <div class="overall-rating">
+            <span class="rating-big">4.8</span>
+            <div class="rating-right">
+              <div class="stars-big">
+                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+              </div>
+              <div class="rating-sub">Based on Google Reviews</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal" style="transition-delay:0s">
+          <div class="review-top">
+            <div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+          <p class="review-text">"Best gym in Mukkam! The equipment is top-notch and the trainers are super helpful. Achieved my fitness goals in just 4 months."</p>
+          <div class="review-bottom">
+            <div class="reviewer">
+              <div class="reviewer-avatar">A</div>
+              <span class="reviewer-name">Arjun K.</span>
+            </div>
+            <span class="review-time">2 weeks ago</span>
+          </div>
+        </div>
+        <div class="review-card reveal" style="transition-delay:0.1s">
+          <div class="review-top">
+            <div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+          <p class="review-text">"Amazing atmosphere for ladies. Very safe, professional, and hygienic. The personal training sessions have been life-changing for me."</p>
+          <div class="review-bottom">
+            <div class="reviewer">
+              <div class="reviewer-avatar">F</div>
+              <span class="reviewer-name">Fathima S.</span>
+            </div>
+            <span class="review-time">1 month ago</span>
+          </div>
+        </div>
+        <div class="review-card reveal" style="transition-delay:0.2s">
+          <div class="review-top">
+            <div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+          <p class="review-text">"Great energetic vibe. Love the cardio section and the steam bath. Staff is very friendly and always motivating."</p>
+          <div class="review-bottom">
+            <div class="reviewer">
+              <div class="reviewer-avatar">R</div>
+              <span class="reviewer-name">Rahul M.</span>
+            </div>
+            <span class="review-time">1 month ago</span>
+          </div>
+        </div>
+        <div class="review-card reveal" style="transition-delay:0.3s">
+          <div class="review-top">
+            <div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+          <p class="review-text">"Transformed my physique completely in 3 months. The trainers here are genuinely knowledgeable and push you in the right direction."</p>
+          <div class="review-bottom">
+            <div class="reviewer">
+              <div class="reviewer-avatar">A</div>
+              <span class="reviewer-name">Arun P.</span>
+            </div>
+            <span class="review-time">2 months ago</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ========== TIMINGS ========== -->
+  <section id="timings" class="section section-surface">
+    <div class="container">
+      <div class="timings-grid">
+        <div class="reveal-left">
+          <div class="about-section-label">
+            <div class="line"></div>
+            <span>Operating Hours</span>
+          </div>
+          <h2 class="timings-h2">Gym<br><span class="accent">Timings</span></h2>
+          <p class="timings-p">We're open 6 days a week with extended hours to accommodate all schedules — early morning risers and late-night lifters alike.</p>
+          <div class="quick-time">
+            <div class="qt-card">
+              <div class="qt-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+              </div>
+              <div>
+                <span class="qt-label">Opening</span>
+                <div class="qt-val">6:00 AM</div>
+              </div>
+            </div>
+            <div class="qt-card">
+              <div class="qt-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+              </div>
+              <div>
+                <span class="qt-label">Closing</span>
+                <div class="qt-val">10:30 PM</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="schedule-table" id="scheduleTable">
+            <div class="schedule-header">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF4400" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Weekly Schedule</span>
+            </div>
+            <!-- Rows injected by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ========== LOCATION ========== -->
+  <section id="location" class="section section-dark">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">
+          <div class="line"></div>
+          <span>Find Us</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">Our <span class="accent">Location</span></h2>
+      </div>
+      <div class="location-grid" style="margin-top:4rem;">
+        <div class="loc-info reveal-left">
+          <div class="loc-card">
+            <div class="loc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="loc-label">Address</div>
+            <div class="loc-val">VIP FITNESS<br>Mukkam, Kozhikode<br>Kerala &ndash; 673602<br>India</div>
+          </div>
+          <div class="loc-card">
+            <div class="loc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91A16 16 0 0 0 14.09 15.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="loc-label">Contact</div>
+            <div class="loc-val"><a href="tel:+919526711773">+91 9526711773</a></div>
+          </div>
+          <a href="https://maps.google.com/?q=VIP+Fitness+Mukkam+Kozhikode+Kerala" target="_blank" rel="noopener" class="directions-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Get Directions
+          </a>
+        </div>
+        <div class="map-wrap reveal-right">
+          <div class="map-top-bar"></div>
+          <iframe title="VIP Fitness Location" src="https://maps.google.com/maps?q=Mukkam+Kozhikode+Kerala+673602&t=&z=14&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="filter:grayscale(80%) invert(90%) contrast(90%);"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="section section-surface">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">
+          <div class="line"></div>
+          <span>Get In Touch</span>
+          <div class="line"></div>
+        </div>
+        <h2 class="section-title">Contact<br><span class="accent">VIP Fitness</span></h2>
+        <p class="section-subtitle" style="margin-top:0.75rem;">Ready to start your fitness journey? Reach out to us and we'll guide you every step of the way.</p>
+      </div>
+      <div class="contact-cards">
+        <div class="contact-card reveal" style="transition-delay:0s">
+          <div class="contact-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91A16 16 0 0 0 14.09 15.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-card-label">Phone / WhatsApp</div>
+          <div class="contact-card-val">+91 9526711773</div>
+          <a href="tel:+919526711773" class="contact-link">Call Now &rarr;</a>
+        </div>
+        <div class="contact-card reveal" style="transition-delay:0.1s">
+          <div class="contact-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-card-label">Address</div>
+          <div class="contact-card-val">VIP FITNESS, Mukkam,<br>Kozhikode, Kerala 673602</div>
+          <a href="https://maps.google.com/?q=VIP+Fitness+Mukkam" target="_blank" class="contact-link">View Map &rarr;</a>
+        </div>
+        <div class="contact-card reveal" style="transition-delay:0.2s">
+          <div class="contact-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+          </div>
+          <div class="contact-card-label">Gym Timings</div>
+          <div class="contact-card-val">Mon&ndash;Sat: 6:00 AM &ndash; 10:30 PM<br>Sunday: Closed</div>
+        </div>
+      </div>
+      <div class="contact-btns reveal">
+        <button class="btn-primary" style="background:#25D366;border-color:#25D366;" onclick="openWhatsApp('Hi! I would like to know more about VIP Fitness Mukkam.')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Chat on WhatsApp
+        </button>
+        <a href="tel:+919526711773" class="btn-outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91A16 16 0 0 0 14.09 15.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo" onclick="smoothScrollTo('home')">
+            <span class="vip">VIP</span>
+            <span class="fit">FITNESS</span>
+          </div>
+          <p>The ultimate premium fitness destination in Mukkam, Kozhikode. Transform your body, elevate your life.</p>
+          <div class="social-links">
+            <a href="https://instagram.com/vipfitness.mukkam" target="_blank" class="social-link" aria-label="Instagram">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://facebook.com/vipfitness.mukkam" target="_blank" class="social-link" aria-label="Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://youtube.com/@vipfitness" target="_blank" class="social-link" aria-label="YouTube">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://wa.me/919526711773" target="_blank" class="social-link" aria-label="WhatsApp">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Quick Links</div>
+          <div class="footer-links">
+            <a onclick="smoothScrollTo('home')">Home</a>
+            <a onclick="smoothScrollTo('about')">About</a>
+            <a onclick="smoothScrollTo('services')">Services</a>
+            <a onclick="smoothScrollTo('gallery')">Gallery</a>
+            <a onclick="smoothScrollTo('membership')">Membership</a>
+            <a onclick="smoothScrollTo('contact')">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Services</div>
+          <div class="footer-links">
+            <a>Strength Training</a>
+            <a>Weight Loss Programs</a>
+            <a>Personal Training</a>
+            <a>Muscle Building</a>
+            <a>Cardio Fitness</a>
+            <a>Online Classes</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact Info</div>
+          <div class="footer-contact-items">
+            <div class="footer-contact-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>VIP FITNESS, Mukkam,<br>Kozhikode, Kerala 673602</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91A16 16 0 0 0 14.09 15.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span><a href="tel:+919526711773">+91 9526711773</a></span>
+            </div>
+            <div class="footer-contact-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+              <span>Mon&ndash;Sat: 6:00 AM &ndash; 10:30 PM<br>Sunday: Closed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> VIP Fitness, Mukkam. All rights reserved.</p>
+        <p>VIP FITNESS, Mukkam, Kozhikode, Kerala 673602</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== WHATSAPP FLOAT ========== -->
+  <button class="wa-float" onclick="openWhatsApp('Hi! I am interested in joining VIP Fitness, Mukkam. Can you share more details?')" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+    <div class="wa-pulse"></div>
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </button>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    /* ---- Helpers ---- */
+    function smoothScrollTo(id) {
+      var el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+    function openWhatsApp(msg) {
+      window.open('https://wa.me/919526711773?text=' + encodeURIComponent(msg), '_blank');
+    }
+
+    /* ---- Footer Year ---- */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ---- Sticky Navbar ---- */
+    var navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    /* ---- Hamburger / Mobile Menu ---- */
+    function toggleMenu() {
+      var h = document.getElementById('hamburger');
+      var m = document.getElementById('mobileMenu');
+      h.classList.toggle('open');
+      m.classList.toggle('open');
+    }
+
+    /* ---- Parallax Hero ---- */
+    var heroBg = document.getElementById('heroBg');
+    window.addEventListener('scroll', function() {
+      var y = window.scrollY;
+      var maxY = window.innerHeight;
+      if (y <= maxY) {
+        heroBg.style.transform = 'scale(1.1) translateY(' + (y * 0.25) + 'px)';
+      }
+    }, { passive: true });
+
+    /* ---- Scroll Reveal ---- */
+    var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+    revealEls.forEach(function(el) { observer.observe(el); });
+
+    /* ---- Build Schedule Table ---- */
+    var schedule = [
+      { day: 'Monday',    hours: '6:00 AM – 10:30 PM', open: true },
+      { day: 'Tuesday',   hours: '6:00 AM – 10:30 PM', open: true },
+      { day: 'Wednesday', hours: '6:00 AM – 10:30 PM', open: true },
+      { day: 'Thursday',  hours: '6:00 AM – 10:30 PM', open: true },
+      { day: 'Friday',    hours: '6:00 AM – 10:30 PM', open: true },
+      { day: 'Saturday',  hours: '6:00 AM – 10:30 PM', open: true },
+      { day: 'Sunday',    hours: 'Closed',              open: false },
+    ];
+    var todayName = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+    var table = document.getElementById('scheduleTable');
+    schedule.forEach(function(item) {
+      var isToday = item.day === todayName;
+      var row = document.createElement('div');
+      row.className = 'schedule-row' + (isToday ? ' today' : '');
+      row.innerHTML =
+        '<div class="day-name">' +
+          (isToday ? '<div class="today-dot"></div>' : '') +
+          item.day +
+          (isToday ? '<span class="today-badge">Today</span>' : '') +
+        '</div>' +
+        '<span class="day-hours' + (!item.open ? ' closed' : '') + '">' + item.hours + '</span>';
+      table.appendChild(row);
+    });
+  </script>
+
+</body>
+</html>
