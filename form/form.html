@@ -1,94 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<title>HTML Form Example</title>
 </head>
-<body>
-    <!DOCTYPE html>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIP Fitness Club - Membership Registration</title>
-</head>
 <body>
 
-<header>
-    <h1>VIP Fitness Club</h1>
-    <p>Join our gym and start building a stronger and healthier lifestyle.</p>
-</header>
+<h1>Student Registration Form</h1>
 
-<main>
+<form action="/submit" method="post">
 
-<section>
-    <h2>Gym Membership Registration</h2>
+<div>
+<label for="fullname">Full Name:</label>
+<input type="text" id="fullname" name="fullname">
+</div>
 
-```
-<p>
-    Fill out the form below to apply for a membership at VIP Fitness Club.
-    Our team will review your request and contact you with further details
-    about membership plans, training sessions, and gym access.
-</p>
+<br>
 
-<form action="/register-membership" method="post">
+<div>
+<label for="email">Email:</label>
+<input type="email" id="email" name="email">
+</div>
 
-    <label for="fullname">Full Name</label>
-    <input type="text" id="fullname" name="full_name">
+<br>
 
-    <br><br>
+<div>
+<label for="password">Password:</label>
+<input type="password" id="password" name="password">
+</div>
 
-    <label for="email">Email Address</label>
-    <input type="email" id="email" name="email_address">
+<br>
 
-    <br><br>
+<div>
+<label for="phone">Phone:</label>
+<input type="tel" id="phone" name="phone">
+</div>
 
-    <label for="phone">Phone Number</label>
-    <input type="tel" id="phone" name="phone_number">
+<br>
 
-    <br><br>
+<div>
+<label for="age">Age:</label>
+<input type="number" id="age" name="age">
+</div>
 
-    <label for="age">Age</label>
-    <input type="number" id="age" name="age">
+<br>
 
-    <br><br>
+<div>
+<label for="dob">Date of Birth:</label>
+<input type="date" id="dob" name="dob">
+</div>
 
-    <label for="startdate">Preferred Start Date</label>
-    <input type="date" id="startdate" name="membership_start_date">
+<br>
 
-    <br><br>
+<div>
+<p>Gender:</p>
 
-    <label for="plan">Select Membership Plan</label>
-    <select id="plan" name="membership_plan">
-        <option value="basic">Basic Plan</option>
-        <option value="standard">Standard Plan</option>
-        <option value="premium">Premium Plan</option>
-    </select>
+<input type="radio" id="male" name="gender" value="male">
+<label for="male">Male</label>
 
-    <br><br>
+<input type="radio" id="female" name="gender" value="female">
+<label for="female">Female</label>
 
-    <label for="goals">Your Fitness Goals</label>
-    <textarea id="goals" name="fitness_goals" rows="4" cols="40"></textarea>
+<input type="radio" id="other" name="gender" value="other">
+<label for="other">Other</label>
+</div>
 
-    <br><br>
+<br>
 
-    <button type="submit">Register for Membership</button>
+<div>
+<p>Skills:</p>
+
+<input type="checkbox" id="html" name="skills">
+<label for="html">HTML</label>
+
+<input type="checkbox" id="css" name="skills">
+<label for="css">CSS</label>
+
+<input type="checkbox" id="js" name="skills">
+<label for="js">JavaScript</label>
+</div>
+
+<br>
+
+<div>
+<label for="country">Country:</label>
+<select id="country" name="country">
+<option>India</option>
+<option>USA</option>
+<option>UK</option>
+<option>Canada</option>
+</select>
+</div>
+
+<br>
+
+<div>
+<label for="address">Address:</label>
+<textarea id="address" name="address"></textarea>
+</div>
+
+<br>
+
+<div>
+<label for="resume">Upload Resume:</label>
+<input type="file" id="resume" name="resume">
+</div>
+
+<br>
+
+<div>
+<input type="submit" value="Register">
+<input type="reset" value="Clear">
+</div>
 
 </form>
-```
-
-</section>
-
-</main>
-
-<footer>
-    <p>© 2026 VIP Fitness Club. All rights reserved.</p>
-</footer>
-
-</body>
-</html>
 
 </body>
 </html>
